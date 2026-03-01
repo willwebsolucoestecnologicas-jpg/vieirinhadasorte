@@ -1,0 +1,212 @@
+:root {
+    --primary: #00A651; 
+    --primary-dark: #00823f;
+    --accent: #FFCC00; 
+    --bg-body: #111827; /* Fundo principal escuro */
+    --bg-light: #1f2937; /* Fundo secundário escuro */
+    --text-light: #f3f4f6; /* Texto claro */
+    --text-muted: #9ca3af;
+    --card-bg: #1f2937;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { 
+    font-family: 'Poppins', sans-serif; 
+    background-color: var(--bg-body); 
+    color: var(--text-light); 
+    overflow-x: hidden; 
+}
+
+/* =========================================
+   NAVBAR & HAMBÚRGUER
+========================================= */
+.navbar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 15px 5%; background: rgba(17, 24, 39, 0.95);
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5); backdrop-filter: blur(10px);
+}
+
+/* Logo Maior e com Efeito de Brilho */
+.logo { 
+    height: 100PX;
+    width: 120PX;
+    height: 80px; 
+    filter: drop-shadow(0 0 8px rgba(255, 204, 0, 0.3)); /* Sombra amarela suave */
+    transition: transform 0.3s ease, filter 0.3s ease; 
+}
+.logo:hover { 
+    transform: scale(1.08); 
+    filter: drop-shadow(0 0 15px rgba(255, 204, 0, 0.7)); /* Brilha mais no hover */
+}
+
+.nav-links { display: flex; list-style: none; gap: 30px; align-items: center; }
+.nav-links a { 
+    text-decoration: none; color: var(--text-light); 
+    font-weight: 500; display: flex; align-items: center; gap: 8px;
+    transition: color 0.3s;
+}
+.nav-links a i { color: var(--primary); }
+.nav-links a:hover { color: var(--primary); }
+
+.btn-outline {
+    border: 2px solid var(--primary); padding: 10px 24px; border-radius: 30px;
+    color: var(--primary); text-decoration: none; font-weight: 600; 
+    transition: all 0.3s; background: transparent; display: inline-block;
+}
+.btn-outline:hover { background: var(--primary); color: #fff; box-shadow: 0 5px 15px rgba(0, 166, 81, 0.3); }
+
+.mobile-only { display: none; }
+
+/* Menu Hambúrguer Icon */
+.hamburger {
+    display: none; flex-direction: column; cursor: pointer; gap: 6px; z-index: 1001;
+}
+.hamburger span {
+    width: 30px; height: 3px; background-color: var(--text-light);
+    border-radius: 3px; transition: all 0.3s ease-in-out;
+}
+.hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); background-color: var(--primary); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); background-color: var(--primary); }
+
+/* =========================================
+   BANNER & SEÇÕES
+========================================= */
+.hero { 
+    width: 100%; padding: 40px 20px;
+    background: linear-gradient(135deg, #000000, #111827);
+    display: flex; justify-content: center; align-items: center;
+}
+.banner-container {
+    max-width: 900px; width: 100%; border-radius: 12px; overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.05);
+}
+.banner-img { width: 100%; height: auto; display: block; }
+
+.section { padding: 80px 5%; }
+.bg-light { background-color: var(--bg-light); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
+.section-header { text-align: center; margin-bottom: 50px; }
+.section-title { font-size: 2.2rem; color: #fff; font-weight: 700; position: relative; display: inline-block; margin-bottom: 15px; }
+.section-title::after { content: ''; position: absolute; left: 50%; bottom: -10px; transform: translateX(-50%); width: 60px; height: 4px; background: var(--primary); border-radius: 2px; }
+.section-subtitle { color: var(--text-muted); font-size: 1.1rem; }
+
+/* Redes Sociais */
+.social-container { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+.btn-social { display: flex; align-items: center; gap: 10px; padding: 15px 30px; border-radius: 50px; text-decoration: none; color: white; font-weight: 600; font-size: 1.1rem; transition: transform 0.3s; }
+.btn-social:hover { transform: translateY(-3px); }
+.btn-instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+.btn-youtube { background: #FF0000; }
+
+/* Busca */
+.search-container { max-width: 600px; margin: 0 auto 40px; position: relative; }
+.search-container input { width: 100%; padding: 18px 20px 18px 55px; border-radius: 50px; border: 1px solid #374151; background: #374151; font-size: 1rem; color: #fff; outline: none; transition: all 0.3s; }
+.search-container input:focus { border-color: var(--primary); box-shadow: 0 0 20px rgba(0, 166, 81, 0.2); }
+.search-container i { position: absolute; left: 22px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 1.2rem; }
+
+/* =========================================
+   CARROSSÉL E CARDS DE VENDEDORES
+========================================= */
+.carousel-vendedores {
+    display: flex; 
+    overflow-x: auto; 
+    gap: 25px; 
+    padding: 20px 10px; 
+    margin: 0 auto; 
+    max-width: 1200px;
+    -webkit-overflow-scrolling: touch; 
+    scroll-behavior: auto; /* Permite que o JS role suavemente */
+}
+/* Esconde a barra de rolagem no PC para ficar mais elegante, já que rola sozinho */
+.carousel-vendedores::-webkit-scrollbar { height: 6px; }
+.carousel-vendedores::-webkit-scrollbar-track { background: transparent; }
+.carousel-vendedores::-webkit-scrollbar-thumb { background: #ddd; border-radius: 10px; }
+.carousel-vendedores:hover::-webkit-scrollbar-thumb { background: var(--primary); }
+
+.grid-vendedores {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); 
+    gap: 30px; max-width: 1200px; margin: 0 auto; padding: 20px;
+}
+
+.card-vendedor {
+    background: var(--card-bg); border-radius: 20px; padding: 30px 20px;
+    text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.05); transition: transform 0.3s;
+    flex: 0 0 280px; /* Tamanho fixo para o carrossel */
+}
+.grid-vendedores .card-vendedor { flex: auto; }
+.card-vendedor:hover { transform: translateY(-8px); border-color: rgba(0, 166, 81, 0.5); }
+
+.foto-vendedor-wrapper {
+    width: 130px; 
+    height: 130px; 
+    margin: 0 auto 20px; 
+    border-radius: 50%; 
+    overflow: hidden;
+    border: 4px solid #fff; 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1); 
+    background-color: var(--bg-light);
+}
+
+/* O zoom (transform: scale) foi removido para a sua imagem caber inteira e perfeitamente! */
+.foto-vendedor-wrapper img {
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover;
+    object-position: center; 
+}
+
+.card-info h3 { color: #fff; font-size: 1.3rem; margin-bottom: 5px; }
+.card-info p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 5px;}
+
+.btn-whatsapp {
+    display: inline-flex; width: 100%; justify-content: center; align-items: center; gap: 8px;
+    background: rgba(37, 211, 102, 0.15); color: #25D366; text-decoration: none;
+    padding: 12px; border-radius: 12px; font-weight: 600; transition: all 0.3s;
+}
+.btn-whatsapp:hover { background: #25D366; color: #fff; }
+
+/* Galeria & Equipe */
+.grid-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto;}
+.gallery-card { overflow: hidden; border-radius: 16px; box-shadow: 0 10px 20px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.05);}
+.gallery-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.gallery-card:hover img { transform: scale(1.05); }
+.team-container { max-width: 800px; margin: 0 auto; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.05);}
+.team-img { width: 100%; display: block; }
+
+/* Call to Action */
+.cta-section { background: linear-gradient(135deg, var(--primary-dark), #000); padding: 80px 5%; text-align: center; }
+.cta-content h2 { font-size: 2.5rem; margin-bottom: 20px; color: #fff;}
+.cta-content p { font-size: 1.2rem; margin-bottom: 40px; color: #ddd; max-width: 600px; margin: 0 auto 40px;}
+.btn-primary { background: #25D366; color: white; padding: 16px 32px; border-radius: 30px; text-decoration: none; font-size: 1.1rem; font-weight: 600; display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s; }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.4); }
+
+footer { background: #000; text-align: center; padding: 40px 20px; border-top: 1px solid rgba(255,255,255,0.05); }
+.agency-credit strong { color: var(--primary); }
+
+/* =========================================
+   RESPONSIVIDADE & MENU MOBILE
+========================================= */
+@media(max-width: 768px) {
+    .desktop-only { display: none; }
+    .mobile-only { display: block; margin-top: 15px; }
+    .hamburger { display: flex; }
+    
+    /* Lógica do Menu Mobile */
+    .nav-links {
+        position: fixed; top: 110px; right: -100%; width: 100%;
+        background: rgba(17, 24, 39, 0.98); flex-direction: column;
+        padding: 30px 20px; border-radius: 0 0 20px 20px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.8); transition: right 0.4s ease;
+    }
+    .nav-links.active { right: 0; }
+    .nav-links a { font-size: 1.2rem; padding: 10px 0; justify-content: center; }
+
+    .logo { height: 65px; }
+    .hero { padding: 30px 15px; }
+    .section-title { font-size: 1.8rem; }
+    .card-vendedor { flex: 0 0 260px; }
+    .btn-social { width: 100%; justify-content: center; }
+    .cta-content h2 { font-size: 2rem; }
+}

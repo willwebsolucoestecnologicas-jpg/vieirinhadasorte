@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR" scroll-behavior="smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vieirinha Dá Sorte</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="LOGO TRANSPARENTE.png" alt="Vieirinha Dá Sorte Logo" class="logo">
+        </div>
+        
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#inicio"><i class="fas fa-home"></i> Início</a></li>
+            <li><a href="#redes"><i class="fas fa-heart"></i> Novidades</a></li>
+            <li><a href="#vendedores"><i class="fas fa-users"></i> Vendedores</a></li>
+            <li><a href="#contemplados"><i class="fas fa-gift"></i> Ganhadores</a></li>
+            <li class="mobile-only"><a href="#seja-vendedor" class="btn-outline">Seja um Vendedor</a></li>
+        </ul>
+        <a href="#seja-vendedor" class="btn-outline desktop-only">Seja um Vendedor</a>
+    </nav>
+
+    <header id="inicio" class="hero">
+        <div class="banner-container">
+            <img src="BANNER.jpg" alt="Prêmio da Semana - Vieirinha Dá Sorte" class="banner-img">
+        </div>
+    </header>
+
+    <section id="redes" class="section bg-light">
+        <div class="section-header">
+            <h2 class="section-title">Acompanhe as Novidades</h2>
+            <p class="section-subtitle">Siga-nos nas redes e assista aos sorteios ao vivo!</p>
+        </div>
+        <div class="social-container">
+            <a href="https://instagram.com/vieirinhadasortemv" target="_blank" class="btn-social btn-instagram">
+                <i class="fab fa-instagram"></i> @vieirinhadasortemv
+            </a>
+            <a href="https://youtube.com/midiarts" target="_blank" class="btn-social btn-youtube">
+                <i class="fab fa-youtube"></i> Midiarts TV
+            </a>
+        </div>
+    </section>
+
+    <section id="vendedores" class="section">
+        <div class="section-header">
+            <h2 class="section-title">Nossos Vendedores</h2>
+            <p class="section-subtitle">Encontre o representante mais próximo e garanta sua sorte!</p>
+        </div>
+        
+        <div class="search-container">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Busque por nome ou cidade...">
+        </div>
+        
+        <div id="containerVendedores" class="carousel-vendedores"></div>
+    </section>
+
+    <section id="contemplados" class="section bg-light">
+        <div class="section-header">
+            <h2 class="section-title">Ganhadores da Semana</h2>
+            <p class="section-subtitle">Pessoas reais que tiveram suas vidas mudadas.</p>
+        </div>
+        <div class="grid-gallery">
+            <div class="gallery-card"><img src="CONTEMPLADO 1.JPG" alt="Contemplado 1" loading="lazy"></div>
+            <div class="gallery-card"><img src="CONTEMPLADO 2.JPG" alt="Contemplado 2" loading="lazy"></div>
+            <div class="gallery-card"><img src="CONTEMPLADO 3.JPG" alt="Contemplado 3" loading="lazy"></div>
+            <div class="gallery-card"><img src="ENTREGA1.jpg" alt="Entrega 1" loading="lazy"></div>
+            <div class="gallery-card"><img src="ENTREGA2.jpg" alt="Entrega 2" loading="lazy"></div>
+            <div class="gallery-card"><img src="ENTREGA3.jpg" alt="Entrega 3" loading="lazy"></div>
+        </div>
+    </section>
+
+    <section id="equipe" class="section">
+        <div class="section-header">
+            <h2 class="section-title">Nossa Equipe</h2>
+        </div>
+        <div class="team-container">
+            <img src="NOSSA EQUIPE.jpg" alt="Equipe Vieirinha Dá Sorte" class="team-img" loading="lazy">
+        </div>
+    </section>
+
+    <section id="seja-vendedor" class="cta-section">
+        <div class="cta-content">
+            <h2>Mude sua realidade hoje!</h2>
+            <p>Seja um vendedor autorizado do Vieirinha Dá Sorte, garanta sua renda extra e leve a sorte para sua cidade.</p>
+            <a href="https://wa.me/5584999999999?text=Olá! Gostaria de saber como me tornar um vendedor do Vieirinha Dá Sorte." target="_blank" class="btn-primary pulse-effect">
+                <i class="fab fa-whatsapp"></i> Falar com a Administração
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Vieirinha Dá Sorte. Todos os direitos reservados.</p>
+        <p class="agency-credit">Desenvolvido por <strong>WillWeb Soluções Tecnológicas</strong></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
