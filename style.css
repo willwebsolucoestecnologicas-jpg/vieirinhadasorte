@@ -191,61 +191,75 @@ footer { background: #000; text-align: center; padding: 40px 20px; border-top: 1
 /* =========================================
    RESPONSIVO E FIX MOBILE (CELULAR)
 ========================================= */
+/* =========================================
+   RESPONSIVO E FIX MOBILE (CELULAR)
+========================================= */
+/* =========================================
+   RESPONSIVO E FIX MOBILE (CELULAR)
+========================================= */
 @media(max-width: 768px) {
+    /* Aumentando o botão Hambúrguer */
     .menu-toggle {
-        display: block; /* Mostra o menu hambúrguer no celular */
+        display: block; 
+        font-size: 2.4rem; /* Bem maior e mais fácil de clicar */
+        color: var(--primary);
     }
 
-    /* Oculta o botão 'Seja um vendedor' do cabeçalho para focar no menu */
+    /* Aumentando a Logo no celular */
+    .logo {
+        height: 70px; /* Maior destaque para a marca */
+    }
+
     .btn-outline { display: none; } 
 
-    /* CORREÇÃO DO BANNER: Preencher 100% da largura sem sobras */
     .hero { 
         height: auto; 
-        min-height: auto; /* Remove a sobra de fundo */
-        background: transparent; /* Remove o fundo escuro */
+        min-height: auto; 
+        background: transparent; 
         padding: 0;
     }
     .banner-img {
         width: 100%;
-        height: auto; /* Acompanha a proporção exata da sua imagem */
+        height: auto; 
         object-fit: cover;
         display: block;
     }
 
-    /* CORREÇÃO DO MENU: Cores visíveis e ajustadas */
+    /* CORREÇÃO DO MENU: Fundo escuro Premium e sem vazar tela */
     .nav-links {
         position: fixed;
         top: 80px; /* Abaixo da navbar */
-        right: -100%; /* Fora da tela */
+        right: 0; /* Fixado na direita */
+        transform: translateX(100%); /* Esconde o menu fora da tela sem criar rolagem */
         width: 250px;
         height: calc(100vh - 80px);
-        background: #ffffff; /* Fundo branco sólido */
+        background: #111827; /* Fundo escuro combinando com o resto do site */
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
         padding-top: 40px;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-        transition: right 0.4s ease-in-out; 
+        box-shadow: -10px 0 20px rgba(0,0,0,0.5); /* Sombra mais imponente */
+        transition: transform 0.4s ease-in-out; /* Animação suave pelo transform */
         z-index: 999;
     }
 
+    /* Quando clicar no hambúrguer, o JS ativa esta classe e o menu desliza para dentro */
     .nav-links.active {
-        right: 0;
+        transform: translateX(0); 
     }
 
-    /* Forçando a cor escura nas letras para dar contraste */
+    /* Letras brancas para dar contraste no fundo escuro */
     .nav-links a {
-        color: #1f2937 !important; /* Letras escuras */
-        font-size: 1.2rem;
-        margin-bottom: 25px;
-        font-weight: 600;
+        color: #ffffff !important; 
+        font-size: 1.3rem; /* Fonte um pouco maior para facilitar o clique */
+        margin-bottom: 30px;
+        font-weight: 500;
         width: 100%;
         justify-content: center;
     }
     
     .nav-links a i {
-        color: var(--primary) !important; /* Ícones verdes */
+        color: var(--primary) !important; 
     }
 
     /* Ajustes de tamanho de fontes para celular */
