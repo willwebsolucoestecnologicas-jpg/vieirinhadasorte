@@ -11,11 +11,19 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+/* =========================================
+   TRAVA GLOBAL DE ROLAGEM HORIZONTAL
+========================================= */
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
 body { 
     font-family: 'Poppins', sans-serif; 
     background-color: var(--bg-body); 
     color: var(--text-light); 
-    overflow-x: hidden; 
 }
 
 /* =========================================
@@ -30,8 +38,7 @@ body {
 
 /* Logo Maior e com Efeito de Brilho */
 .logo { 
-    height: 100PX;
-    width: 120PX;
+    width: 120px;
     height: 80px; 
     filter: drop-shadow(0 0 8px rgba(255, 204, 0, 0.3)); /* Sombra amarela suave */
     transition: transform 0.3s ease, filter 0.3s ease; 
@@ -116,9 +123,8 @@ body {
     margin: 0 auto; 
     max-width: 1200px;
     -webkit-overflow-scrolling: touch; 
-    scroll-behavior: auto; /* Permite que o JS role suavemente */
+    scroll-behavior: auto; 
 }
-/* Esconde a barra de rolagem no PC para ficar mais elegante, já que rola sozinho */
 .carousel-vendedores::-webkit-scrollbar { height: 6px; }
 .carousel-vendedores::-webkit-scrollbar-track { background: transparent; }
 .carousel-vendedores::-webkit-scrollbar-thumb { background: #ddd; border-radius: 10px; }
@@ -133,7 +139,7 @@ body {
     background: var(--card-bg); border-radius: 20px; padding: 30px 20px;
     text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     border: 1px solid rgba(255,255,255,0.05); transition: transform 0.3s;
-    flex: 0 0 280px; /* Tamanho fixo para o carrossel */
+    flex: 0 0 280px; 
 }
 .grid-vendedores .card-vendedor { flex: auto; }
 .card-vendedor:hover { transform: translateY(-8px); border-color: rgba(0, 166, 81, 0.5); }
@@ -149,7 +155,6 @@ body {
     background-color: var(--bg-light);
 }
 
-/* O zoom (transform: scale) foi removido para a sua imagem caber inteira e perfeitamente! */
 .foto-vendedor-wrapper img {
     width: 100%; 
     height: 100%; 
@@ -188,26 +193,16 @@ footer { background: #000; text-align: center; padding: 40px 20px; border-top: 1
 /* =========================================
    RESPONSIVIDADE & MENU MOBILE
 ========================================= */
-/* =========================================
-   RESPONSIVO E FIX MOBILE (CELULAR)
-========================================= */
-/* =========================================
-   RESPONSIVO E FIX MOBILE (CELULAR)
-========================================= */
-/* =========================================
-   RESPONSIVO E FIX MOBILE (CELULAR)
-========================================= */
 @media(max-width: 768px) {
-    /* Aumentando o botão Hambúrguer */
     .menu-toggle {
         display: block; 
-        font-size: 2.4rem; /* Bem maior e mais fácil de clicar */
+        font-size: 2.4rem; 
         color: var(--primary);
+        z-index: 1001;
     }
 
-    /* Aumentando a Logo no celular */
     .logo {
-        height: 70px; /* Maior destaque para a marca */
+        height: 70px; 
     }
 
     .btn-outline { display: none; } 
@@ -228,30 +223,33 @@ footer { background: #000; text-align: center; padding: 40px 20px; border-top: 1
     /* CORREÇÃO DO MENU: Fundo escuro Premium e sem vazar tela */
     .nav-links {
         position: fixed;
-        top: 80px; /* Abaixo da navbar */
-        right: 0; /* Fixado na direita */
-        transform: translateX(100%); /* Esconde o menu fora da tela sem criar rolagem */
+        top: 80px; 
+        right: 0; 
+        transform: translateX(100%); 
+        visibility: hidden; /* Esconde o menu do navegador quando fechado */
+        opacity: 0; /* Deixa invisível */
         width: 250px;
         height: calc(100vh - 80px);
-        background: #111827; /* Fundo escuro combinando com o resto do site */
+        background: #111827; 
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
         padding-top: 40px;
-        box-shadow: -10px 0 20px rgba(0,0,0,0.5); /* Sombra mais imponente */
-        transition: transform 0.4s ease-in-out; /* Animação suave pelo transform */
+        box-shadow: -10px 0 20px rgba(0,0,0,0.5); 
+        transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s ease-in-out; 
         z-index: 999;
     }
 
-    /* Quando clicar no hambúrguer, o JS ativa esta classe e o menu desliza para dentro */
+    /* Quando clicar no hambúrguer, o JS ativa esta classe */
     .nav-links.active {
         transform: translateX(0); 
+        visibility: visible; /* Fica visível novamente */
+        opacity: 1; /* Acende na tela */
     }
 
-    /* Letras brancas para dar contraste no fundo escuro */
     .nav-links a {
         color: #ffffff !important; 
-        font-size: 1.3rem; /* Fonte um pouco maior para facilitar o clique */
+        font-size: 1.3rem; 
         margin-bottom: 30px;
         font-weight: 500;
         width: 100%;
@@ -262,7 +260,6 @@ footer { background: #000; text-align: center; padding: 40px 20px; border-top: 1
         color: var(--primary) !important; 
     }
 
-    /* Ajustes de tamanho de fontes para celular */
     .section-title { font-size: 1.8rem; }
     .btn-social { padding: 12px 20px; font-size: 1rem; width: 100%; justify-content: center; }
     .cta-content h2 { font-size: 2rem; }
