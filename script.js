@@ -1,4 +1,3 @@
-// Banco de dados completo com os 37 vendedores
 const vendedores = [
     { id: 1, nome: "Daniela", cidade: "Encanto / RN", fone: "5584981269839", img: "V1.jpg" },
     { id: 2, nome: "Rita de Cássia", cidade: "Encanto / RN", fone: "5584981905683", img: "V2.jpg" },
@@ -6,21 +5,70 @@ const vendedores = [
     { id: 4, nome: "Andressa Maria", cidade: "Sítio Juazeiro, Marcelino Vieira / RN", fone: "5584999455946", img: "V4.jpg" },
     { id: 5, nome: "Mônica", cidade: "Marcelino Vieira / RN", fone: "5584996827404", img: "V5.jpg" },
     
-    { id: 37, nome: "Gilkelia", cidade: "Rafael Fernandes / RN", fone: "5584996334567", img: "V37.jpg" }
 ];
 
 const containerVendedores = document.getElementById('containerVendedores');
 const searchInput = document.getElementById('searchInput');
 let autoScrollInterval;
 
-// Função para iniciar a rolagem automática
+// =========================================
+// MENU HAMBÚRGUER (MOBILE)
+// =========================================
+const menuToggle = document.getElementById('mobile-menu');
+const navLinks = document.getElementById('nav-links');
+
+menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    // Troca o ícone de hambúrguer para um "X" quando aberto
+    const icon = menuToggle.querySelector('i');
+    if(navLinks.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+    } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+    }
+});
+
+// Fecha o menu ao clicar em algum link
+navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        menuToggle.querySelector('i').classList.replace('fa-times', 'fa-bars');
+    });
+});
+
+// =========================================
+// ANIMAÇÃO DE ROLAGEM (SCROLL REVEAL)
+// =========================================
+const observerOptions = {
+    threshold: 0.15 // Dispara quando 15% do elemento estiver visível
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            // Opcional: Descomente a linha abaixo se quiser que a animação aconteça apenas 1 vez
+            // observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// Pega todos os elementos com a classe fade-up e aplica o observador
+document.querySelectorAll('.fade-up').forEach((el) => {
+    observer.observe(el);
+});
+
+// =========================================
+// CARROSSEL E RENDERIZAÇÃO
+// =========================================
 function startAutoScroll() {
-    stopAutoScroll(); // Garante que não tenha múltiplos intervalos rodando
+    stopAutoScroll(); 
     autoScrollInterval = setInterval(() => {
         if (containerVendedores.className === 'carousel-vendedores') {
-            containerVendedores.scrollLeft += 1.5; // Velocidade da rolagem
+            containerVendedores.scrollLeft += 1.5; 
             
-            // Se chegou no final, volta para o início suavemente
             if (containerVendedores.scrollLeft >= (containerVendedores.scrollWidth - containerVendedores.clientWidth - 2)) {
                 containerVendedores.scrollLeft = 0;
             }
@@ -28,12 +76,10 @@ function startAutoScroll() {
     }, 25);
 }
 
-// Função para pausar a rolagem
 function stopAutoScroll() {
     clearInterval(autoScrollInterval);
 }
 
-// Pausa o carrossel se o usuário passar o mouse ou tocar na tela
 containerVendedores.addEventListener('mouseenter', stopAutoScroll);
 containerVendedores.addEventListener('mouseleave', () => {
     if(searchInput.value.trim() === '') startAutoScroll();
@@ -43,16 +89,15 @@ containerVendedores.addEventListener('touchend', () => {
     if(searchInput.value.trim() === '') startAutoScroll();
 });
 
-// Renderização dos cards
 function renderizarVendedores(lista, isBuscando = false) {
     containerVendedores.innerHTML = '';
     
     if(isBuscando) {
         containerVendedores.className = 'grid-vendedores';
-        stopAutoScroll(); // Para de rodar se estiver filtrando
+        stopAutoScroll(); 
     } else {
         containerVendedores.className = 'carousel-vendedores';
-        startAutoScroll(); // Volta a rodar se estiver na lista completa
+        startAutoScroll(); 
     }
     
     if(lista.length === 0) {
@@ -84,10 +129,8 @@ function renderizarVendedores(lista, isBuscando = false) {
     });
 }
 
-// Inicializa a página com todos os vendedores
 renderizarVendedores(vendedores, false);
 
-// Evento de busca em tempo real
 searchInput.addEventListener('input', (e) => {
     const termoBusca = e.target.value.toLowerCase().trim();
     
